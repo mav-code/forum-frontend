@@ -39,12 +39,12 @@ class BoardContainer extends React.Component {
     render() {
       
       return (
-        <>
+        <div class="boardcontainer">
         This is where the boards go
         <ul>
         {this.state.boards.map(board => <Board key={board.id} board={board}/>)}
         </ul>
-        </>
+        </div>
       )
     }
 }

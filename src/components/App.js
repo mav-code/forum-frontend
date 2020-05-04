@@ -26,12 +26,12 @@ class App extends React.Component {
     return (
     <>
       <Header />
+      <BoardContainer />
       <main>
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm {...routeProps} />} />
-          <Route exact path='/boards' render={(routeProps) => <BoardContainer {...routeProps} />} />
-          <Route exact path='/posts' render={(routeProps) => <PostContainer {...routeProps} />} />
+          <Route path='boards/:boardname' render={(routeProps) => <PostContainer {...routeProps} />} />
         </Switch>
       </main>
       
@@ -42,4 +42,5 @@ class App extends React.Component {
 
 export default App;
 
-
+// <Route exact path='/boards' render={(routeProps) => <BoardContainer {...routeProps} />} />
+// <Route exact path='/posts' render={(routeProps) => <PostContainer {...routeProps} />} />

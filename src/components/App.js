@@ -27,11 +27,11 @@ class App extends React.Component {
     <>
       <Header />
       <BoardContainer />
+      <PostContainer />
       <main>
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm {...routeProps} />} />
-          <Route path='boards/:boardname' render={(routeProps) => <PostContainer {...routeProps} />} />s
         </Switch>
       </main>
       
@@ -44,3 +44,5 @@ export default App;
 
 // <Route exact path='/boards' render={(routeProps) => <BoardContainer {...routeProps} />} />
 // <Route exact path='/posts' render={(routeProps) => <PostContainer {...routeProps} />} />
+// I would like to make this work:
+// <Route path='boards/:id' render={(routeProps) => <PostContainer {...routeProps} />} />

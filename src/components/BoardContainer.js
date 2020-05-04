@@ -3,7 +3,7 @@ import Board from './Board.js'
 
 class BoardContainer extends React.Component {
 
-  /// fetching posts here for future use like "last post in board" info
+  /// could fetch posts here for future use like "last post in board" info
 
   state = {
     boards: [],
@@ -12,25 +12,15 @@ class BoardContainer extends React.Component {
 
   componentDidMount() {
     this.fetchBoards()
-    this.fetchPosts()
+    // this.fetchPosts()
   }
 
   fetchBoards() {
     fetch(`http://localhost:3000/boards`)
       .then(r => r.json())
-      .then(boardsObjs => {
+      .then(boardsArray => {
         this.setState({
-          boards: boardsObjs
-        })
-      })
-  }
-
-  fetchPosts() {
-    fetch(`http://localhost:3000/posts`)
-      .then(r => r.json())
-      .then(postsObjs => {
-        this.setState({
-          posts: postsObjs
+          boards: boardsArray
         })
       })
   }

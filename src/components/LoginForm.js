@@ -7,6 +7,31 @@ class LoginForm extends React.Component {
     password: ""
   }
 
+  handleInputChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+   
+      fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: 'include',
+        body: JSON.stringify(this.state)
+      })
+      .then(r => {
+        if (!r.ok) {
+          throw r
+        }
+        return r.json()
+      })
+      .then(user => this.props.handleUpdateCurrentUser(user))
+  }
   
     render() {
       const { username, password } = this.state

@@ -31,7 +31,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm {...routeProps} />} />
-          <Route path='boards/:boardname' render={(routeProps) => <PostContainer {...routeProps} />} />
+          <Route path='boards/:boardname' render={(routeProps) => <PostContainer {...routeProps} />} />s
         </Switch>
       </main>
       

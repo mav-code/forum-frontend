@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, withRouter} from 'react-router-dom'
 import Header from './Header.js';
 import BoardContainer from './BoardContainer.js';
 import PostContainer from './PostContainer.js';
@@ -28,8 +28,7 @@ handleUpdateCurrentUser = user => {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
-          <Route exact path='/boards' render={(routeProps) => <BoardContainer {...routeProps} />} />
-          <Route exact path='/posts' render={(routeProps) => <PostContainer {...routeProps} />} />
+          <Route path='boards/:id' render={(routeProps) => <PostContainer {...routeProps} />} />
         </Switch>
       </main>
       
@@ -38,7 +37,7 @@ handleUpdateCurrentUser = user => {
   }
 }
 
-export default App;
+export default withRouter(App);
 
 // <Route exact path='/boards' render={(routeProps) => <BoardContainer {...routeProps} />} />
 // <Route exact path='/posts' render={(routeProps) => <PostContainer {...routeProps} />} />

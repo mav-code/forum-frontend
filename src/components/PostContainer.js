@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post.js'
+import { withRouter } from "react-router"
 
 class PostContainer extends React.Component {
 
@@ -12,11 +13,22 @@ class PostContainer extends React.Component {
     fetch(`http://localhost:3000/posts/`)
       .then(r => r.json())
       .then(postsArray => {
+        // const thisBoardsPosts = postsArray.filter(post => post.board_id = this.props.location)
+        // console.log("thisBoardsPosts", thisBoardsPosts)
+        // console.log("this.props.location", this.props.location)
         this.setState({
           posts: postsArray
         })
         console.log("in postcontainer cdm 2", postsArray)
       })
+  }
+
+  thisBoardsPosts = () => {
+    ///// very janky line. must be better way
+    const thisBoardsPosts = this.state.posts.filter(post => post.board_id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
+    console.log("thisBoardsPosts", thisBoardsPosts)
+    console.log("this.props.location", this.props.location)
+    return thisBoardsPosts
   }
 
   
@@ -31,11 +43,11 @@ class PostContainer extends React.Component {
             <th>Author</th>
             <th>Comments</th>
           </tr>
-          {this.state.posts.map(post => <Post key={post.id} post={post}/>)}
+          {this.thisBoardsPosts().map(post => <Post key={post.id} post={post}/>)}
         </table>
         </div>
       )
     }
 }
 
-export default PostContainer;
+export default withRouter(PostContainer);

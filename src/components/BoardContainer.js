@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from './Board.js'
+import { withRouter } from "react-router"
 
 class BoardContainer extends React.Component {
 
@@ -25,6 +26,10 @@ class BoardContainer extends React.Component {
       })
   }
 
+  showBoard = (id) => {
+    this.props.history.push(`/boards/${id}`)
+  }
+
   
     render() {
       
@@ -32,11 +37,11 @@ class BoardContainer extends React.Component {
         <div class="boardcontainer">
         This is where the boards go
         <ul>
-        {this.state.boards.map(board => <Board key={board.id} board={board}/>)}
+        {this.state.boards.map(board => <Board key={board.id} board={board} showBoard={this.showBoard}/>)}
         </ul>
         </div>
       )
     }
 }
 
-export default BoardContainer;
+export default withRouter(BoardContainer);

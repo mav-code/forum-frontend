@@ -6,7 +6,7 @@ class Board extends React.Component {
       console.log(this.props.board)
       
       return (
-        <li>
+        <li onClick={() => this.props.showBoard(this.props.board.id)}>
         {this.props.board.name}
         </li>
       )

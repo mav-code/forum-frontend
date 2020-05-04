@@ -8,21 +8,17 @@ import SignupForm from './SignupForm.js'
 
 class App extends React.Component {
   state = {
-    page: 'signup'
+    currentUser: null
   }
 
-  getPage() {
-    switch (this.state.page) {
-      case "login":
-        return <LoginForm />
-      case "signup":
-        return <SignupForm />
-      default:
-        return <h1>404</h1>
-    }
-  }
+handleUpdateCurrentUser = user => {
+  this.setState({
+    currentUser: user
+  })
+}
+  
   render() {
-    
+    console.log(this.state)
     return (
     <>
       <Header />
@@ -30,8 +26,10 @@ class App extends React.Component {
       <PostContainer />
       <main>
         <Switch>
-          <Route exact path='/login' render={(routeProps) => <LoginForm {...routeProps} />} />
-          <Route exact path='/signup' render={(routeProps) => <SignupForm {...routeProps} />} />
+          <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
+          <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
+          <Route exact path='/boards' render={(routeProps) => <BoardContainer {...routeProps} />} />
+          <Route exact path='/posts' render={(routeProps) => <PostContainer {...routeProps} />} />
         </Switch>
       </main>
       

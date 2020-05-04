@@ -15,7 +15,22 @@ class SignupForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    // TODO: when we get to auth, make this work
+    if (this.state.password === this.state.password_confirmation) {
+      fetch("http://localhost:3000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: 'include',
+        body: JSON.stringify(this.state)
+      })
+      .then(r => r.json())
+      .then(user => this.props.handleUpdateCurrentUser(user))
+    }
+    else {
+      alert("Please make sure your Password and Confirmation match")
+    }
+
   }
     render() {
       const { username, password, password_confirmation } = this.state

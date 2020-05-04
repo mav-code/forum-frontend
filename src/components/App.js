@@ -10,7 +10,7 @@ class App extends React.Component {
     
     return (
     <div className="App">
-    test
+    This text is in App.js
       <Header/>
       <BoardContainer/>
       <PostContainer/>

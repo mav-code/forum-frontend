@@ -3,11 +3,12 @@ import React from 'react'
 class Board extends React.Component {
   
     render() {
+      console.log(this.props.board)
       
       return (
-        <>
-        This is a board
-        </>
+        <li>
+        {this.props.board.name}
+        </li>
       )
     }
 }

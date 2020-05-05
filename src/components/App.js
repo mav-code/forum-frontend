@@ -28,7 +28,7 @@ handleUpdateCurrentUser = user => {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
-          <Route path='boards/:id' render={(routeProps) => <PostContainer {...routeProps} />} />
+          {/* first thing tomorrow <Route path='boards/:id' render={(routeProps) => <PostContainer {...routeProps} />} /> */}
         </Switch>
       </main>
       

@@ -25,10 +25,7 @@ class PostContainer extends React.Component {
 
   thisBoardsPosts = () => {
     ///// very janky line. must be better way
-    const thisBoardsPosts = this.state.posts.filter(post => post.board_id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
-    console.log("thisBoardsPosts", thisBoardsPosts)
-    console.log("this.props.location", this.props.location)
-    return thisBoardsPosts
+    return this.state.posts.filter(post => post.board_id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
   }
 
   

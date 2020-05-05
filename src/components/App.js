@@ -22,7 +22,7 @@ handleUpdateCurrentUser = user => {
     console.log(this.state)
     return (
     <>
-      <Header />
+      <Header handleUpdateCurrentUser={this.handleUpdateCurrentUser} />
       <BoardContainer />
       <CommentContainer />
       <main>

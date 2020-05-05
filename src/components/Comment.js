@@ -5,9 +5,11 @@ class Comment extends React.Component {
     render() {
       
       return (
-          <>
-          This is a comment
-          </>
+          <div>
+            This is a comment
+            {this.props.comment.body}
+            {this.props.comment.user.username}
+          </div>
 
       )
     }

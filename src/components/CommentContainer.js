@@ -1,6 +1,7 @@
 import React from 'react'
 import Comment from './Comment.js'
 import { withRouter } from "react-router"
+import Post from './Post.js'
 
 class CommentContainer extends React.Component {
 
@@ -16,8 +17,12 @@ class CommentContainer extends React.Component {
         this.setState({
           comments: commentsArray
         })
-        console.log("in commentcontainer cdm 2", commentsArray)
+        console.log("comments0 cdm", this.state.comments[0].post)
       })
+  }
+
+  showPost = (id) => {
+    this.props.history.push(`/posts/${id}`)
   }
 
   thisPostsComments = () => {
@@ -26,10 +31,11 @@ class CommentContainer extends React.Component {
   }
   
     render() {
-      
+      console.log("in comment container", this.props)
+      const thisPost = this.props.posts.find(post => post.id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
       return (
         <>
-        This is where the comments go
+        <Post post={thisPost} showPost={this.showPost}/>
         {this.thisPostsComments().map(comment => <Comment key={comment.id} comment={comment}/>)}
         </>
       )

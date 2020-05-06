@@ -220,3 +220,8 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.post:hover {
+  color: #064579;
+  cursor: pointer;
+}

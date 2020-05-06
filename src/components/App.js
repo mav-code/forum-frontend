@@ -9,17 +9,33 @@ import SignupForm from './SignupForm.js'
 
 class App extends React.Component {
   state = {
-    currentUser: null
+    currentUser: null,
+    posts: []
   }
 
 handleUpdateCurrentUser = user => {
   this.setState({
-    currentUser: user
+    currentUser: user,
+    posts: []
   })
+}
+
+componentDidMount() {
+  fetch(`http://localhost:3000/posts/`)
+    .then(r => r.json())
+    .then(postsArray => {
+      // const thisBoardsPosts = postsArray.filter(post => post.board_id = this.props.location)
+      // console.log("thisBoardsPosts", thisBoardsPosts)
+      // console.log("this.props.location", this.props.location)
+      this.setState({
+        posts: postsArray
+      })
+      console.log("in app cdm", postsArray)
+    })
 }
   
   render() {
-    console.log(this.state)
+    console.log("app state", this.state)
     return (
     <>
       <Header />
@@ -29,8 +45,8 @@ handleUpdateCurrentUser = user => {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
-          <Route path='/boards' render={(routeProps) => <PostContainer {...routeProps} />} />
-          <Route path='/posts' render={(routeProps) => <CommentContainer {...routeProps} />} />
+          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} />} />
+          <Route path='/posts' render={(routeProps) => <CommentContainer posts={this.state.posts} {...routeProps} />} />
         </Switch>
       </main>
       

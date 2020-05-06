@@ -27,12 +27,12 @@ class CommentContainer extends React.Component {
 
   thisPostsComments = () => {
     ///// very janky line. must be better way
-    return this.state.comments.filter(comment => comment.post_id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
+    return this.state.comments.filter(comment => comment.post_id === parseInt(this.props.location.pathname.match(/\d+/)[0]))
   }
   
     render() {
       console.log("in comment container", this.props)
-      const thisPost = this.props.posts.find(post => post.id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
+      const thisPost = this.props.posts.find(post => post.id === parseInt(this.props.location.pathname.match(/\d+/)[0]))
       return (
         <>
         <Post post={thisPost} showPost={this.showPost}/>

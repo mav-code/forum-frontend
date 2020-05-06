@@ -24,8 +24,9 @@ class PostContainer extends React.Component {
   // }
 
   thisBoardsPosts = () => {
-    console.log("thisBoardsPosts", this.props)
-    return this.props.posts.filter(post => post.board_id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
+    console.log("thisBoardsPosts", this.props.posts)
+    console.log("pathname", this.props.location.pathname.match(/\d+/)[0])
+    return this.props.posts.filter(post => post.board_id === parseInt(this.props.location.pathname.match(/\d+/)[0]))
   }
 
   showPost = (id) => {
@@ -34,6 +35,8 @@ class PostContainer extends React.Component {
 
   
     render() {
+      const ourPosts = this.thisBoardsPosts()
+      console.log("in pc render", ourPosts)
       return (
         <div class="postcontainer">
         <table>
@@ -42,7 +45,7 @@ class PostContainer extends React.Component {
             <th>Author</th>
             <th>Comments</th>
           </tr>
-          {this.thisBoardsPosts().map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
+          {ourPosts.map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
         </table>
         </div>
       )

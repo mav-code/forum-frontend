@@ -24,12 +24,13 @@ handleUpdateCurrentUser = user => {
     <>
       <Header />
       <BoardContainer />
-      <CommentContainer />
+      {/* <CommentContainer /> */}
       <main>
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route path='/boards' render={(routeProps) => <PostContainer {...routeProps} />} />
+          <Route path='/posts' render={(routeProps) => <CommentContainer {...routeProps} />} />
         </Switch>
       </main>
       

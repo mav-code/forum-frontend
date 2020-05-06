@@ -195,6 +195,7 @@ main {
 
 .sidebar li:hover {
   color: #064579;
+  cursor: pointer;
 }
 
 /* POST CONTAINER */

@@ -28,6 +28,10 @@ class PostContainer extends React.Component {
     return this.state.posts.filter(post => post.board_id === parseInt(this.props.location.pathname[this.props.location.pathname.length - 1]))
   }
 
+  showPost = (id) => {
+    this.props.history.push(`/posts/${id}`)
+  }
+
   
     render() {
       console.log("in postcontainer render", this.state.posts)
@@ -40,7 +44,7 @@ class PostContainer extends React.Component {
             <th>Author</th>
             <th>Comments</th>
           </tr>
-          {this.thisBoardsPosts().map(post => <Post key={post.id} post={post}/>)}
+          {this.thisBoardsPosts().map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
         </table>
         </div>
       )

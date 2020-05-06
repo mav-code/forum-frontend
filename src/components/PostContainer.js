@@ -36,7 +36,6 @@ class PostContainer extends React.Component {
     render() {
       return (
         <div class="postcontainer">
-        This is where the posts go
         <table>
           <tr>
             <th>Topic</th>

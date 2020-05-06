@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+//random comment so I can commit
+
 class Header extends React.Component {
   state = {
     searchTerm: ""

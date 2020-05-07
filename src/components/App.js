@@ -15,8 +15,7 @@ class App extends React.Component {
 
 handleUpdateCurrentUser = user => {
   this.setState({
-    currentUser: user,
-    posts: []
+    currentUser: user
   })
 }
 

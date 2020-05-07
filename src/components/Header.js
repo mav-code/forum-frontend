@@ -9,7 +9,7 @@ class Header extends React.Component {
   }
 
   handleLogout = () => {
-    fetch("http:localhost:3000/logout", {
+    fetch("http://localhost:3000/logout", {
       method: "POST",
       credentials: "include"
     })
@@ -39,7 +39,12 @@ class Header extends React.Component {
         </form>
         <div className="actions">
           {this.props.currentUser ? (
+            <>
+            <Link to='/profile'>
+              <button>Profile</button>
+            </Link>
             <button onClick={this.handleLogout}>Logout {this.props.currentUser.username}</button>
+            </>
           ) : (
               <>
                 <Link to="/login">

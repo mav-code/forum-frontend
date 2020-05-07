@@ -30,7 +30,9 @@ class LoginForm extends React.Component {
         }
         return r.json()
       })
-      .then(user => this.props.handleUpdateCurrentUser(user))
+      .then(user => {
+        this.props.handleUpdateCurrentUser(user)
+        this.props.history.push("/boards/")})
   }
   
     render() {
@@ -38,9 +40,7 @@ class LoginForm extends React.Component {
 
       return (
         <div className="form-container">
-        <Link to={`/signup`}>
-          <button>Sign Up</button>
-        </Link>
+        
         <h3>Sign in to your account</h3>
         <form onSubmit={this.handleSubmit}>
           <label>Username:</label>
@@ -49,6 +49,9 @@ class LoginForm extends React.Component {
           <input type="password" name="password" onChange={this.handleInputChange} value={password} />
           <input type="submit" value="Login" />
         </form>
+        <Link to={`/signup`}>
+          <button>Don't have an account? Click Here to Sign Up</button>
+        </Link>
       </div>
       )
     }

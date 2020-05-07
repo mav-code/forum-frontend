@@ -1,5 +1,6 @@
 import React from 'react'
 import Post from './Post.js'
+import PostForm from './PostForm.js'
 import { withRouter } from "react-router"
 
 class PostContainer extends React.Component {
@@ -24,8 +25,9 @@ class PostContainer extends React.Component {
   // }
 
   thisBoardsPosts = () => {
-    console.log("thisBoardsPosts", this.props.posts)
-    console.log("pathname", this.props.location.pathname.match(/\d+/)[0])
+    console.log("thisBoardsPosts", this.props)
+    //console.log("pathname", this.props.location.pathname.match(/\d+/)[0])
+   
     return this.props.posts.filter(post => post.board_id === parseInt(this.props.location.pathname.match(/\d+/)[0]))
   }
 
@@ -47,7 +49,9 @@ class PostContainer extends React.Component {
           </tr>
           {ourPosts.map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
         </table>
+        < PostForm board_id={parseInt(this.props.location.pathname.match(/\d+/)[0])}/>
         </div>
+        
       )
     }
 }

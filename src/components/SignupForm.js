@@ -25,7 +25,10 @@ class SignupForm extends React.Component {
         body: JSON.stringify(this.state)
       })
       .then(r => r.json())
-      .then(user => this.props.handleUpdateCurrentUser(user))
+      .then(user => {
+        this.props.handleUpdateCurrentUser(user)
+        this.props.history.push("/boards/1")
+      })
     }
     else {
       alert("Please make sure your Password and Confirmation match")

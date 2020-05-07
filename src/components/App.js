@@ -6,6 +6,7 @@ import PostContainer from './PostContainer.js';
 import CommentContainer from './CommentContainer.js';
 import LoginForm from './LoginForm.js'
 import SignupForm from './SignupForm.js'
+import ProfilePage from './ProfilePage.js'
 
 class App extends React.Component {
   state = {
@@ -32,13 +33,18 @@ componentDidMount() {
       })
       console.log("in app cdm", postsArray)
     })
+    fetch(`http://localhost:3000/autologin/`, {
+      credentials: "include"
+    })
+    .then(r => r.json())
+    .then(user => this.setState({currentUser: user}))
 }
   
   render() {
     console.log("app state", this.state)
     return (
     <>
-      <Header handleUpdateCurrentUser={this.handleUpdateCurrentUser} />
+      <Header handleUpdateCurrentUser={this.handleUpdateCurrentUser} currentUser={this.state.currentUser}/>
       <BoardContainer />
       {/* <CommentContainer /> */}
       <main>
@@ -47,6 +53,7 @@ componentDidMount() {
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} />} />
           <Route path='/posts' render={(routeProps) => <CommentContainer posts={this.state.posts} {...routeProps} />} />
+          <Route path='/profile' render={(routeProps) => <ProfilePage {...routeProps} />} />
         </Switch>
       </main>
       

@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from './Board.js'
+
 import { withRouter } from "react-router"
 
 class BoardContainer extends React.Component {
@@ -38,6 +39,7 @@ class BoardContainer extends React.Component {
           Boards:
           <ul>
             {this.state.boards.map(board => <Board key={board.id} board={board} showBoard={this.showBoard}/>)}
+            
           </ul>
         </div>
       )

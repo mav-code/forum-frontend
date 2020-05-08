@@ -58,7 +58,7 @@ componentDidMount() {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
-          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} renderNewPost={this.renderNewPost}  /> } />
+          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} renderNewPost={this.renderNewPost} currentUser={this.state.currentUser}  /> } />
           <Route path='/posts' render={(routeProps) => <CommentContainer posts={this.state.posts} {...routeProps} currentUser={this.state.currentUser} />} />
           <Route path='/profile' render={(routeProps) => <ProfilePage {...routeProps} />} />
         </Switch>

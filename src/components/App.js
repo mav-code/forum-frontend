@@ -10,7 +10,7 @@ import ProfilePage from './ProfilePage.js'
 
 class App extends React.Component {
   state = {
-    currentUser: null,
+    currentUser: '',
     posts: []
   }
 
@@ -50,9 +50,9 @@ componentDidMount() {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
-          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} />} />
+          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} currentUser={this.state.currentUser} {...routeProps} />} />
           <Route path='/posts' render={(routeProps) => <CommentContainer posts={this.state.posts} {...routeProps} />} />
-          <Route path='/profile' render={(routeProps) => <ProfilePage {...routeProps} />} />
+          <Route path='/profile' render={(routeProps) => <ProfilePage posts={this.state.posts} {...routeProps} />} />
         </Switch>
       </main>
       

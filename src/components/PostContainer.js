@@ -38,7 +38,8 @@ class PostContainer extends React.Component {
   
     render() {
       const ourPosts = this.thisBoardsPosts()
-      console.log("in pc render", ourPosts)
+      console.log("In PC",this.props.currentUser)
+      
       return (
         <div class="postcontainer">
         <table>
@@ -47,7 +48,7 @@ class PostContainer extends React.Component {
             <th>Author</th>
             <th>Comments</th>
           </tr>
-          {ourPosts.map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
+          {ourPosts.map(post => <Post currentUser={this.props.currentUser} key={post.id} post={post} showPost={this.showPost}/>)}
         </table>
         < PostForm board_id={parseInt(this.props.location.pathname.match(/\d+/)[0])}/>
         </div>

@@ -53,12 +53,12 @@ class PostForm extends React.Component {
 
     render () {
         
-        let {title, body, board }= this.state
+        let {title, body }= this.state
         
         
         return (
             <div className="post-form-container">
-                <h4>Write a Post</h4>
+                <h6>Make a Post</h6>
                 <form onSubmit={this.handleSubmit}>
                     <label>Title:</label>
                     <textarea name="title" onChange={this.handleInputChange} value={title} />

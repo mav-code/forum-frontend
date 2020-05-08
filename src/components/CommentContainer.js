@@ -22,6 +22,17 @@ class CommentContainer extends React.Component {
       })
   }
 
+  displayComment = (comment) => {
+    let newArray = this.state.comments
+    newArray.push(comment)
+    console.log("new comment", comment)
+    console.log("newArray", newArray)
+    this.setState({
+      comments: newArray
+    })
+    console.log("commentcontainerstate", this.state)
+  }
+
   showPost = (id) => {
     this.props.history.push(`/posts/${id}`)
   }
@@ -39,11 +50,11 @@ class CommentContainer extends React.Component {
           <div class='commentcontainer'>
             <table>
               <Post post={thisPost} showPost={this.showPost}/>
-              {this.thisPostsComments().map(comment => <Comment key={comment.id} comment={comment}/>)}
+              {this.thisPostsComments().map(comment => <Comment key={comment.id} comment={comment} currentUser={this.props.currentUser}/>)}
             </table>
           </div>
           <>
-            <CommentForm post_id={parseInt(this.props.location.pathname.match(/\d+/)[0])}/>
+            <CommentForm post_id={parseInt(this.props.location.pathname.match(/\d+/)[0])} displayComment={this.displayComment}/>
           </>
         </>
       )

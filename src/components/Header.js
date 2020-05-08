@@ -34,7 +34,7 @@ class Header extends React.Component {
       return (
         <header>
         <form className="search" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Search Boards..." value={this.state.searchTerm} onChange={this.handleChange} />
+          <input type="text" placeholder="🚧Search function in progress🚧" value={this.state.searchTerm} onChange={this.handleChange} />
           <input type="submit" value="Search" />
         </form>
         <div className="actions">

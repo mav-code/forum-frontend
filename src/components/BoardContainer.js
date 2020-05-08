@@ -36,7 +36,7 @@ class BoardContainer extends React.Component {
       
       return (
         <div id="boardcontainer" class="sidebar">
-          Boards:
+          Choose a Board!
           <ul>
             {this.state.boards.map(board => <Board key={board.id} board={board} showBoard={this.showBoard}/>)}
             

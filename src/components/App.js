@@ -38,6 +38,14 @@ componentDidMount() {
     .then(r => r.json())
     .then(user => this.setState({currentUser: user}))
 }
+
+  renderNewPost = (newPost) => {
+    let newArray = this.state.posts
+    newArray.push(newPost)
+    this.setState({
+      posts: newArray
+    })
+  }
   
   render() {
     console.log("app state", this.state)
@@ -50,8 +58,8 @@ componentDidMount() {
         <Switch>
           <Route exact path='/login' render={(routeProps) => <LoginForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
           <Route exact path='/signup' render={(routeProps) => <SignupForm handleUpdateCurrentUser={this.handleUpdateCurrentUser} {...routeProps} />} />
-          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} />} />
-          <Route path='/posts' render={(routeProps) => <CommentContainer posts={this.state.posts} {...routeProps} />} />
+          <Route path='/boards' render={(routeProps) => <PostContainer posts={this.state.posts} {...routeProps} renderNewPost={this.renderNewPost}  /> } />
+          <Route path='/posts' render={(routeProps) => <CommentContainer posts={this.state.posts} {...routeProps} currentUser={this.state.currentUser} />} />
           <Route path='/profile' render={(routeProps) => <ProfilePage {...routeProps} />} />
         </Switch>
       </main>

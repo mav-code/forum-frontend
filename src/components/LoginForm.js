@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
       })
       .then(user => {
         this.props.handleUpdateCurrentUser(user)
-        this.props.history.push("/boards/")})
+        this.props.history.push("/")})
   }
   
     render() {

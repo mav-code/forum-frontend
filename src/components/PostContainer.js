@@ -49,7 +49,7 @@ class PostContainer extends React.Component {
           </tr>
           {ourPosts.map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
         </table>
-        < PostForm board_id={parseInt(this.props.location.pathname.match(/\d+/)[0])}/>
+        <PostForm board_id={parseInt(this.props.location.pathname.match(/\d+/)[0])} showPost={this.showPost} renderNewPost={this.props.renderNewPost} />
         </div>
         
       )

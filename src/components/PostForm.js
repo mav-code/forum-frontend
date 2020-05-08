@@ -45,8 +45,11 @@ class PostForm extends React.Component {
         body: JSON.stringify(this.state)
       })
         .then(r => r.json())
-        .then(updatedBoard => {
+        .then(newPost => {
+          console.log(newPost)
           this.setState(initialState)
+          this.props.renderNewPost(newPost)
+          this.props.showPost(newPost.id)
         })
     }
     

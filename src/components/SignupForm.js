@@ -27,7 +27,7 @@ class SignupForm extends React.Component {
       .then(r => r.json())
       .then(user => {
         this.props.handleUpdateCurrentUser(user)
-        this.props.history.push("/boards/1")
+        this.props.history.push("/")
       })
     }
     else {

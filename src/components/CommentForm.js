@@ -34,6 +34,7 @@ class CommentForm extends React.Component {
       event.preventDefault()
       console.log("submitting comment")
       console.log("this.props", this.props)
+      console.log("this.state", this.state)
   
       fetch(`http://localhost:3000/comments`, {
         method: "POST",
@@ -45,7 +46,11 @@ class CommentForm extends React.Component {
       })
         .then(r => r.json())
         .then(updatedPost => {
-          this.setState(initialState)
+            console.log("last comment?", updatedPost.comments[updatedPost.comments.length - 1])
+          this.setState({
+              body: ""
+          })
+          this.props.displayComment(updatedPost.comments[updatedPost.comments.length - 1])
         })
     }
     

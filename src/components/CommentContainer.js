@@ -34,10 +34,12 @@ class CommentContainer extends React.Component {
       console.log("in comment container", this.props)
       const thisPost = this.props.posts.find(post => post.id === parseInt(this.props.location.pathname.match(/\d+/)[0]))
       return (
-        <>
+        <div class='commentcontainer'>
+        <table>
         <Post post={thisPost} showPost={this.showPost}/>
         {this.thisPostsComments().map(comment => <Comment key={comment.id} comment={comment}/>)}
-        </>
+        </table>
+        </div>
       )
     }
 }

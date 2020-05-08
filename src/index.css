@@ -279,3 +279,8 @@ tr:nth-child(even) {
   outline: none;
   transform: scale(0.95);
 }
+
+.commentcontainer {
+  margin-left: 240px;
+  margin-right: 240px
+}

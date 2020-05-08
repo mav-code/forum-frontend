@@ -6,8 +6,10 @@ class Comment extends React.Component {
       console.log("in comment", this.props)
       return (
           <div>
-            {this.props.comment.body}
-            {this.props.comment.user.username}
+           <tr>
+            <td>{this.props.comment.body}</td>
+            <td>{this.props.comment.user.username}</td>
+          </tr>
           </div>
 
       )

@@ -47,7 +47,7 @@ class PostContainer extends React.Component {
             <th>Author</th>
             <th>Comments</th>
           </tr>
-          {ourPosts.map(post => <Post key={post.id} post={post} showPost={this.showPost}/>)}
+          {ourPosts.map(post => <Post key={post.id} post={post} showPost={this.showPost} currentUser={this.props.currentUser}/>)}
         </table>
         <PostForm board_id={parseInt(this.props.location.pathname.match(/\d+/)[0])} showPost={this.showPost} renderNewPost={this.props.renderNewPost} />
         </div>
